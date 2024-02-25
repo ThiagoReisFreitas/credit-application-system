@@ -1,2 +1,2 @@
 # credit-application-system
-api de simulação de credito bancario
+Api feita com kotlin e SpringBoot de uma simulação de credito bancario 
