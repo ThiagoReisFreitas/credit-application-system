@@ -27,7 +27,7 @@ data class Credit (
     val numberOfInstallment: Int = 0,
 
     @Enumerated
-    val status: Status = Status.IN_PROGRESS,
+    var status: Status = Status.IN_PROGRESS,
 
     @ManyToOne
     var customer: Customer? = null,

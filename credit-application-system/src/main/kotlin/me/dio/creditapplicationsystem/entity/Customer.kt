@@ -10,6 +10,7 @@ import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.OneToMany
 import jakarta.persistence.Table
+import java.math.BigDecimal
 
 
 @Entity
@@ -22,10 +23,13 @@ data class Customer(
     var lastName: String = "",
 
     @Column(nullable = false, unique = true)
-    val cpf: String,
+    var cpf: String = "",
 
     @Column(nullable = false, unique = true)
     var email: String = "",
+
+    @Column(nullable = false)
+    var income: BigDecimal = BigDecimal.ZERO,
 
     @Column(nullable = false)
     var password: String = "",
@@ -35,7 +39,11 @@ data class Customer(
     var address: Address = Address(),
 
     @Column(nullable = false)
-    @OneToMany(fetch = FetchType.LAZY, cascade = arrayOf(CascadeType.REMOVE, CascadeType.PERSIST), mappedBy = "customer")
+    @OneToMany(
+        fetch = FetchType.LAZY,
+        cascade = arrayOf(CascadeType.REMOVE, CascadeType.PERSIST),
+        mappedBy = "customer"
+    )
     var credits: List<Credit> = mutableListOf(),
 
     @Id
